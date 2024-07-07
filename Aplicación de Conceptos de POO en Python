@@ -1,0 +1,41 @@
+class Vehiculo:
+    def __init__(self, marca, modelo, año):
+        self.marca = marca
+        self.modelo = modelo
+        self.año = año
+        self.__kilometraje = 0  # Atributo encapsulado
+
+    def get_kilometraje(self):
+        return self.__kilometraje
+
+    def set_kilometraje(self, kilometros):
+        self.__kilometraje = kilometros
+
+    def arrancar(self):
+        print(f"El {self.marca} {self.modelo} del año {self.año} ha arrancado.")
+
+    def frenar(self):
+        print(f"El {self.marca} {self.modelo} del año {self.año} se ha detenido.")
+class Automovil(Vehiculo):
+    def __init__(self, marca, modelo, año, num_puertas):
+        super().__init__(marca, modelo, año)
+        self.num_puertas = num_puertas
+
+    def abrir_baul(self):
+        print(f"El baúl del {self.marca} {self.modelo} se ha abierto.")
+
+    def arrancar(self):
+        super().arrancar()
+        print("El automóvil está listo para conducir.")
+# Crear instancia de Vehículo
+vehiculo = Vehiculo("Toyota", "Corolla", 2020)
+vehiculo.arrancar()
+vehiculo.frenar()
+vehiculo.set_kilometraje(50000)
+print(f"Kilometraje del vehículo: {vehiculo.get_kilometraje()} km")
+
+# Crear instancia de Automovil
+auto = Automovil("Honda", "Civic", 2018, 4)
+auto.arrancar()
+auto.abrir_baul()
+auto.frenar()
